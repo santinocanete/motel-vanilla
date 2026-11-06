@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de administración | Vanilla Unicorn</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="panel">
+        <aside class="barra-lateral">
+            <nav class="menu" aria-label="Secciones del panel">
+                <button class="opcion activa" type="button" data-seccion="habitaciones" aria-label="Habitaciones" title="Habitaciones"><span class="icono">♧</span><span class="texto-opcion">Habitaciones</span></button>
+                <button class="opcion" type="button" data-seccion="mantenimiento" aria-label="Mantenimiento" title="Mantenimiento"><span class="icono">♜</span><span class="texto-opcion">Mantenimiento</span></button>
+                <button class="opcion" type="button" data-seccion="usuarios" aria-label="Usuarios" title="Usuarios"><span class="icono">♙</span><span class="texto-opcion">Usuarios</span></button>
+                <button class="opcion" type="button" data-seccion="reservas" aria-label="Reservas" title="Reservas"><span class="icono">＄</span><span class="texto-opcion">Reservas</span></button>
+            </nav>
+            <a class="marca" href="motel.html" aria-label="Volver a Vanilla Unicorn">
+                <img src="logo hotel1.png" alt="Vanilla Unicorn Hotel">
+                <span>← Volver</span>
+            </a>
+        </aside>
+
+        <main class="contenido">
+            <header class="encabezado">
+                <div>
+                    <p class="sobre-titulo">VANILLA UNICORN HOTEL</p>
+                    <h1 id="titulo-seccion">Habitaciones</h1>
+                    <p class="subtitulo">Gestioná la información de tu motel desde un solo lugar.</p>
+                </div>
+                <div class="fecha" id="fecha-hoy"></div>
+            </header>
+
+            <section class="resumen" aria-label="Resumen del motel">
+                <article class="tarjeta-resumen"><span class="resumen-icono">▣</span><div><span class="resumen-numero">12</span><span class="resumen-texto">Habitaciones</span></div></article>
+                <article class="tarjeta-resumen"><span class="resumen-icono">♙</span><div><span class="resumen-numero">8</span><span class="resumen-texto">Usuarios</span></div></article>
+                <article class="tarjeta-resumen"><span class="resumen-icono">▤</span><div><span class="resumen-numero">5</span><span class="resumen-texto">Reservas activas</span></div></article>
+                <article class="tarjeta-resumen"><span class="resumen-icono">⚒</span><div><span class="resumen-numero">2</span><span class="resumen-texto">Mantenimientos</span></div></article>
+            </section>
+
+            <section class="seccion activa" id="habitaciones">
+                <div class="titulo-panel">
+                    <div><h2>Habitaciones</h2><p>Agregá, modificá o quitá habitaciones.</p></div>
+                    <button class="boton-principal" type="button" onclick="mostrarFormulario('form-habitacion')">＋ Agregar habitación</button>
+                </div>
+                <form class="formulario oculto" id="form-habitacion">
+                    <h3>Nueva habitación</h3>
+                    <div class="campos">
+                        <label>Número<input type="text" placeholder="Ej. 04" required></label>
+                        <label>Tipo<select required><option value="">Elegir tipo</option><option>Noob</option><option>Pro</option><option>Hacker</option></select></label>
+                        <label>Precio por 3 horas<input type="number" placeholder="15000" min="0" required></label>
+                        <label>Estado<select><option>Disponible</option><option>Ocupada</option><option>En mantenimiento</option></select></label>
+                    </div>
+                    <div class="acciones-form"><button class="boton-principal" type="submit">Guardar habitación</button><button class="boton-secundario" type="button" onclick="ocultarFormulario('form-habitacion')">Cancelar</button></div>
+                </form>
+                <div class="tabla-contenedor"><table><thead><tr><th>Número</th><th>Tipo</th><th>Precio / 3 h</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>
+                    <tr><td>01</td><td>Noob</td><td>$15.000</td><td><span class="estado disponible">Disponible</span></td><td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td></tr>
+                    <tr><td>02</td><td>Noob</td><td>$15.000</td><td><span class="estado ocupada">Ocupada</span></td><td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td></tr>
+                    <tr><td>03</td><td>Pro</td><td>$30.000</td><td><span class="estado disponible">Disponible</span></td><td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td></tr>
+                    <tr><td>04</td><td>Hacker</td><td>$65.000</td><td><span class="estado mantenimiento">En mantenimiento</span></td><td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td></tr>
+                </tbody></table></div>
+            </section>
+
+            <section class="seccion" id="usuarios">
+                <div class="titulo-panel"><div><h2>Usuarios</h2><p>Administrá empleados y clientes.</p></div><button class="boton-principal" type="button" onclick="mostrarFormulario('form-usuario')">＋ Agregar usuario</button></div>
+                <form class="formulario oculto" id="form-usuario"><h3>Nuevo usuario</h3><div class="campos"><label>Nombre y apellido<input type="text" placeholder="Nombre completo" required></label><label>Correo electrónico<input type="email" placeholder="correo@ejemplo.com"></label><label>Teléfono<input type="tel" placeholder="Número de teléfono"></label><label>Tipo de usuario<select><option>Cliente</option><option>Empleado</option></select></label></div><div class="acciones-form"><button class="boton-principal" type="submit">Guardar usuario</button><button class="boton-secundario" type="button" onclick="ocultarFormulario('form-usuario')">Cancelar</button></div></form>
+                <div class="tabla-contenedor"><table><thead><tr><th>Nombre</th><th>Correo</th><th>Teléfono</th><th>Tipo</th><th>Acciones</th></tr></thead><tbody><tr><td>María Gómez</td><td>maria@email.com</td><td>351 555 0101</td><td><span class="estado empleado">Empleado</span></td><td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td></tr><tr><td>Lucas Pérez</td><td>lucas@email.com</td><td>351 555 0102</td><td><span class="estado cliente">Cliente</span></td><td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td></tr><tr><td>Sofía Ruiz</td><td>sofia@email.com</td><td>351 555 0103</td><td><span class="estado cliente">Cliente</span></td><td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td></tr></tbody></table></div>
+            </section>
+
+            <section class="seccion" id="reservas">
+                <div class="titulo-panel"><div><h2>Reservas</h2><p>Consultá y organizá las estadías.</p></div><button class="boton-principal" type="button" onclick="mostrarFormulario('form-reserva')">＋ Agregar reserva</button></div>
+                <form class="formulario oculto" id="form-reserva"><h3>Nueva reserva</h3><div class="campos"><label>Cliente<input type="text" placeholder="Nombre del cliente" required></label><label>Habitación<input type="text" placeholder="Número de habitación" required></label><label>Entrada<input type="date" required></label><label>Salida<input type="date" required></label></div><div class="acciones-form"><button class="boton-principal" type="submit">Guardar reserva</button><button class="boton-secundario" type="button" onclick="ocultarFormulario('form-reserva')">Cancelar</button></div></form>
+                <div class="tabla-contenedor"><table><thead><tr><th>Cliente</th><th>Habitación</th><th>Entrada</th><th>Salida</th><th>Estado</th><th>Acciones</th></tr></thead><tbody><tr><td>Lucas Pérez</td><td>02 · Noob</td><td>23/10/2026</td><td>23/10/2026</td><td><span class="estado ocupada">En curso</span></td><td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td></tr><tr><td>Sofía Ruiz</td><td>03 · Pro</td><td>24/10/2026</td><td>25/10/2026</td><td><span class="estado disponible">Confirmada</span></td><td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td></tr><tr><td>Julián Díaz</td><td>01 · Noob</td><td>26/10/2026</td><td>26/10/2026</td><td><span class="estado disponible">Confirmada</span></td><td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td></tr></tbody></table></div>
+            </section>
+
+            <section class="seccion" id="mantenimiento">
+                <div class="titulo-panel"><div><h2>Mantenimiento</h2><p>Registrá tareas y revisá su estado.</p></div><button class="boton-principal" type="button" onclick="mostrarFormulario('form-mantenimiento')">＋ Agregar tarea</button></div>
+                <form class="formulario oculto" id="form-mantenimiento"><h3>Nueva tarea</h3><div class="campos"><label>Habitación<input type="text" placeholder="Número de habitación" required></label><label>Descripción<input type="text" placeholder="Ej. Revisar aire acondicionado" required></label><label>Responsable<input type="text" placeholder="Nombre del empleado"></label><label>Estado<select><option>Pendiente</option><option>En curso</option><option>Completado</option></select></label></div><div class="acciones-form"><button class="boton-principal" type="submit">Guardar tarea</button><button class="boton-secundario" type="button" onclick="ocultarFormulario('form-mantenimiento')">Cancelar</button></div></form>
+                <div class="tabla-contenedor"><table><thead><tr><th>Habitación</th><th>Tarea</th><th>Responsable</th><th>Estado</th><th>Acciones</th></tr></thead><tbody><tr><td>04</td><td>Revisar hidromasaje</td><td>María Gómez</td><td><span class="estado mantenimiento">Pendiente</span></td><td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td></tr><tr><td>07</td><td>Cambiar lámpara</td><td>María Gómez</td><td><span class="estado ocupada">En curso</span></td><td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td></tr></tbody></table></div>
+            </section>
+            <footer class="pie">Vanilla Unicorn Hotel · Panel de administración</footer>
+        </main>
+    </div>
+
+    <script>
+        var botones = document.querySelectorAll(".opcion");
+        var secciones = document.querySelectorAll(".seccion");
+        var titulo = document.getElementById("titulo-seccion");
+
+        botones.forEach(function(boton) {
+            boton.onclick = function() {
+                botones.forEach(function(item) { item.classList.remove("activa"); });
+                secciones.forEach(function(item) { item.classList.remove("activa"); });
+                boton.classList.add("activa");
+                document.getElementById(boton.dataset.seccion).classList.add("activa");
+                titulo.textContent = boton.textContent.trim();
+            };
+        });
+
+        function mostrarFormulario(id) {
+            document.getElementById(id).classList.remove("oculto");
+        }
+
+        function ocultarFormulario(id) {
+            document.getElementById(id).classList.add("oculto");
+        }
+
+        function quitarFila(boton) {
+            if (confirm("¿Querés quitar este elemento?")) {
+                boton.closest("tr").remove();
+            }
+        }
+
+var filaEnEdicion = null;
+
+        function editarFila(boton) {
+            filaEnEdicion = boton.closest("tr");
+            var celdas = filaEnEdicion.querySelectorAll("td");
+            var seccionId = filaEnEdicion.closest("section").id;
+
+            if (seccionId === "habitaciones") {
+                mostrarFormulario("form-habitacion");
+                var form = document.getElementById("form-habitacion");
+                var inputs = form.querySelectorAll("input, select");
+                inputs[0].value = celdas[0].textContent.trim();
+                inputs[1].value = celdas[1].textContent.trim();
+                inputs[2].value = celdas[2].textContent.replace("$", "").trim();
+                inputs[3].value = celdas[3].textContent.trim();
+            } else if (seccionId === "usuarios") {
+                mostrarFormulario("form-usuario");
+                var form = document.getElementById("form-usuario");
+                var inputs = form.querySelectorAll("input, select");
+                inputs[0].value = celdas[0].textContent.trim();
+                inputs[1].value = celdas[1].textContent.trim();
+                inputs[2].value = celdas[2].textContent.trim();
+                inputs[3].value = celdas[3].textContent.trim();
+            } else if (seccionId === "reservas") {
+                mostrarFormulario("form-reserva");
+                var form = document.getElementById("form-reserva");
+                var inputs = form.querySelectorAll("input");
+                inputs[0].value = celdas[0].textContent.trim();
+                inputs[1].value = celdas[1].textContent.trim();
+                
+                var fEnt = celdas[2].textContent.split('/').reverse().join('-');
+                var fSal = celdas[3].textContent.split('/').reverse().join('-');
+                inputs[2].value = fEnt;
+                inputs[3].value = fSal;
+            } else if (seccionId === "mantenimiento") {
+                mostrarFormulario("form-mantenimiento");
+                var form = document.getElementById("form-mantenimiento");
+                var inputs = form.querySelectorAll("input, select");
+                inputs[0].value = celdas[0].textContent.trim();
+                inputs[1].value = celdas[1].textContent.trim();
+                inputs[2].value = celdas[2].textContent.trim();
+                inputs[3].value = celdas[3].textContent.trim();
+            }
+        }
+
+// Lógica para agregar o editar Habitaciones
+        document.getElementById("form-habitacion").onsubmit = function(evento) {
+            evento.preventDefault();
+            let inputs = this.querySelectorAll("input, select");
+            let claseEstado = inputs[3].value === "Disponible" ? "disponible" : (inputs[3].value === "Ocupada" ? "ocupada" : "mantenimiento");
+            
+            let htmlFila = `
+                <td>${inputs[0].value}</td>
+                <td>${inputs[1].value}</td>
+                <td>$${inputs[2].value}</td>
+                <td><span class="estado ${claseEstado}">${inputs[3].value}</span></td>
+                <td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td>
+            `;
+
+            if (filaEnEdicion) {
+                filaEnEdicion.innerHTML = htmlFila;
+                filaEnEdicion = null;
+            } else {
+                document.querySelector("#habitaciones tbody").innerHTML += `<tr>${htmlFila}</tr>`;
+            }
+            this.reset();
+            ocultarFormulario('form-habitacion');
+        };
+
+        // Lógica para agregar o editar Usuarios
+        document.getElementById("form-usuario").onsubmit = function(evento) {
+            evento.preventDefault();
+            let inputs = this.querySelectorAll("input, select");
+            let claseEstado = inputs[3].value === "Empleado" ? "empleado" : "cliente";
+            
+            let htmlFila = `
+                <td>${inputs[0].value}</td>
+                <td>${inputs[1].value}</td>
+                <td>${inputs[2].value}</td>
+                <td><span class="estado ${claseEstado}">${inputs[3].value}</span></td>
+                <td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td>
+            `;
+
+            if (filaEnEdicion) {
+                filaEnEdicion.innerHTML = htmlFila;
+                filaEnEdicion = null;
+            } else {
+                document.querySelector("#usuarios tbody").innerHTML += `<tr>${htmlFila}</tr>`;
+            }
+            this.reset();
+            ocultarFormulario('form-usuario');
+        };
+
+        // Lógica para agregar o editar Reservas
+        document.getElementById("form-reserva").onsubmit = function(evento) {
+            evento.preventDefault();
+            let inputs = this.querySelectorAll("input");
+            
+            let fEntrada = inputs[2].value.split('-').reverse().join('/');
+            let fSalida = inputs[3].value.split('-').reverse().join('/');
+
+            let htmlFila = `
+                <td>${inputs[0].value}</td>
+                <td>${inputs[1].value}</td>
+                <td>${fEntrada}</td>
+                <td>${fSalida}</td>
+                <td><span class="estado ocupada">En curso</span></td>
+                <td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td>
+            `;
+
+            if (filaEnEdicion) {
+                filaEnEdicion.innerHTML = htmlFila;
+                filaEnEdicion = null;
+            } else {
+                document.querySelector("#reservas tbody").innerHTML += `<tr>${htmlFila}</tr>`;
+            }
+            this.reset();
+            ocultarFormulario('form-reserva');
+        };
+
+        // Lógica para agregar o editar Tareas de Mantenimiento
+        document.getElementById("form-mantenimiento").onsubmit = function(evento) {
+            evento.preventDefault();
+            let inputs = this.querySelectorAll("input, select");
+            let claseEstado = inputs[3].value === "Pendiente" ? "mantenimiento" : (inputs[3].value === "En curso" ? "ocupada" : "disponible");
+            
+            let htmlFila = `
+                <td>${inputs[0].value}</td>
+                <td>${inputs[1].value}</td>
+                <td>${inputs[2].value}</td>
+                <td><span class="estado ${claseEstado}">${inputs[3].value}</span></td>
+                <td><button class="accion" type="button" onclick="editarFila(this)">Modificar</button><button class="accion quitar" type="button" onclick="quitarFila(this)">Quitar</button></td>
+            `;
+
+            if (filaEnEdicion) {
+                filaEnEdicion.innerHTML = htmlFila;
+                filaEnEdicion = null;
+            } else {
+                document.querySelector("#mantenimiento tbody").innerHTML += `<tr>${htmlFila}</tr>`;
+            }
+            this.reset();
+            ocultarFormulario('form-mantenimiento');
+        };
+
+        document.getElementById("fecha-hoy").textContent = new Date().toLocaleDateString("es-AR", {
+            weekday: "long", day: "numeric", month: "long", year: "numeric"
+        });
+    </script>
+</body>
+</html>

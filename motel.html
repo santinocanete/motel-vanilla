@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla Unicorn</title>
+    <link rel="stylesheet" href="motel.css">
+</head>
+<body>
+    <section class="registro">
+        <div class="logo">
+            <img src="logo hotel1.png">
+        </div>
+        <div class="titulo">
+            Vanilla Unicorn
+        </div>
+        <div class="entrar">
+            <span class="ini_ses">Si ya tenes una cuenta</span>
+            <button class="iniciar_sesion">INICIAR SESION</button>
+            <button class="registrar">REGISTRARSE</button>
+        </div>    
+    </section>
+    <main>
+        <section class="info">
+            <div class="informacion">
+                <div class="quien_somo">
+                    <span class="info_quien_somo">
+                        Somos una empresa de gestion de hoteles que ayuda a su organizacion interna de informacion, tenemos 20 años de experiencia gestionando moteles de Villa Carlos Paz y alrededores y ofrecemos los mejores precios del mercado, teniendo los mejores programadores de paginas web
+                    </span>
+                </div>
+                <div class="precios">
+                    <span class="text_precios">
+                        PRECIOS POR 3 HORA<br><br>
+                        Precio habitacion noob: 15K<br>
+                        Precio habitacion pro: 30K<br>
+                        Precio habitacion hacker: 65K<br><br>
+                        PRECIOS POR NOCHE<br><br>
+                        Precio habitacion noob: 30K <br>
+                        Precio habitacion pro: 60K <br>
+                        Precio habitacion hacker: 120K
+                    </span>
+                </div>
+                <div class="servi">
+                    <span class="text_servi">
+                        HABITACION NOOB <br>
+                        -Limpieza y Frigobar <br>
+                        -Televisor <br>
+                        -Aire Acondicionado <br><br>
+                        HABITACION PRO <br>
+                        -Limpieza a fondo <br>
+                        -Servicio de desayuno o merienda <br>
+                        -Baño particular <br><br>
+                        HABITACION HACKER <br>
+                        -Limpieza profunda
+                        -Servicio de desayuno o merienda a la habitacion (sin cargo)<br>
+                        -Baño particular <br>
+                        -Hidromasaje <br>
+                        -Sesion de spa <br>
+                        -Espacio muy amplio
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section class="imagenes">
+            <div class="titulo_hab_noob">
+                <span>HABITACION NOOB</span>
+            </div>
+
+            <div class="img_noob">
+                <img src="noob1.png" class="img_hab_1">
+                <img src="noob2.png" class="img_hab_1">
+                <img src="noob3.png" class="img_hab_1">
+            </div>
+
+            <div class="titulo_hab_pro">
+                <span>HABITACION PRO</span>
+            </div>
+
+            <div class="img_pro">
+                <img src="pro1.jpeg" class="img_hab_2">
+                <img src="pro2.jpeg" class="img_hab_2">
+                <img src="pro3.jpeg" class="img_hab_2">
+            </div>
+
+            <div class="titulo_hab_pro">
+                <span>HABITACION HACKER</span>
+            </div>
+
+            <div class="img_hacker">
+                <img src="hacker1.jpeg" class="img_hab_3">
+                <img src="hacker2.jpeg" class="img_hab_3">
+                <img src="hacker3.jpeg" class="img_hab_3">
+            </div>
+        </section>
+    </main>
+
+    <!-- VENTANA DE REGISTRO -->
+    <div id="modal-registro" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" id="cerrar-registro">&times;</span>
+            <h2>Registro</h2>
+            <form>
+                <input type="correo" id="correo" name="correo" class="input-form" placeholder="Correo electronico" required>
+                <br><br>
+                <input type="password" id="password" name="password" class="input-form" placeholder="Contraseña" required>
+                <br><br>
+                <input type="text" id="usuario" name="usuario" class="input-form" placeholder="Nombre Del hotel" required>
+                <br><br>
+                <input type="tel" id="tel" name="tel" class="input-form" placeholder="Num tel" required>
+                <br><br>
+                <input type="text" id="dir" name="dir" class="input-form" placeholder="Direccion" required>
+                <br><br>
+                <button type="submit" class="registrar">Crear cuenta</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- VENTANA DE INICIO DE SESIÓN -->
+    <div id="modal-login" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" id="cerrar-login">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form>
+                <input type="text" id="usuario-login" name="usuario-login" class="input-form" placeholder="Nombre Del hotel" required>
+                <br><br>
+                <input type="password" id="password-login" name="password-login" class="input-form" placeholder="Contraseña" required>
+                <br><br>
+                <button type="submit" class="iniciar_sesion">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var modalRegistro = document.getElementById("modal-registro");
+        var modalLogin = document.getElementById("modal-login");
+
+        var btnRegistro = document.querySelector(".entrar .registrar");
+        var btnLogin = document.querySelector(".entrar .iniciar_sesion");
+
+        var spanRegistro = document.getElementById("cerrar-registro");
+        var spanLogin = document.getElementById("cerrar-login");
+
+        // Abrir modales
+        btnRegistro.onclick = function() {
+            modalRegistro.style.display = "flex";
+        }
+
+        btnLogin.onclick = function() {
+            modalLogin.style.display = "flex";
+        }
+
+        // Cerrar con la "X"
+        spanRegistro.onclick = function() {
+            modalRegistro.style.display = "none";
+        }
+
+        spanLogin.onclick = function() {
+            modalLogin.style.display = "none";
+        }
+
+        // Cerrar al hacer clic fuera del cuadro
+        window.onclick = function(event) {
+            if (event.target == modalRegistro) {
+                modalRegistro.style.display = "none";
+            }
+            if (event.target == modalLogin) {
+                modalLogin.style.display = "none";
+            }
+        }
+
+        var modalRegistro = document.getElementById("modal-registro");
+        var modalLogin = document.getElementById("modal-login");
+
+        var btnRegistro = document.querySelector(".entrar .registrar");
+        var btnLogin = document.querySelector(".entrar .iniciar_sesion");
+
+        var spanRegistro = document.getElementById("cerrar-registro");
+        var spanLogin = document.getElementById("cerrar-login");
+
+        // Abrir modales
+        btnRegistro.onclick = function() {
+            modalRegistro.style.display = "flex";
+        }
+
+        btnLogin.onclick = function() {
+            modalLogin.style.display = "flex";
+        }
+
+        // Cerrar con la "X"
+        spanRegistro.onclick = function() {
+            modalRegistro.style.display = "none";
+        }
+
+        spanLogin.onclick = function() {
+            modalLogin.style.display = "none";
+        }
+
+        // Cerrar al hacer clic fuera del cuadro
+        window.onclick = function(event) {
+            if (event.target == modalRegistro) {
+                modalRegistro.style.display = "none";
+            }
+            if (event.target == modalLogin) {
+                modalLogin.style.display = "none";
+            }
+        }
+
+// Lógica para registrar cuenta
+        var formRegistro = document.querySelector("#modal-registro form");
+
+        formRegistro.onsubmit = function(event) {
+            event.preventDefault(); 
+            
+            var usuario = document.getElementById("usuario").value;
+            var contrasena = document.getElementById("password").value;
+            var correo = document.getElementById("correo").value;
+
+            // Guardar datos en el almacenamiento del navegador
+            localStorage.setItem("usuarioRegistrado", usuario);
+            localStorage.setItem("passwordRegistrada", contrasena);
+            localStorage.setItem("correoRegistrado", correo);
+
+            alert("Registro exitoso. Ya podés iniciar sesión.");
+            modalRegistro.style.display = "none";
+            formRegistro.reset();
+        };
+
+        // Lógica para iniciar sesión y redirigir al dashboard
+        var formLogin = document.querySelector("#modal-login form");
+
+        formLogin.onsubmit = function(event) {
+            event.preventDefault(); 
+
+            var usuarioIngresado = document.getElementById("usuario-login").value;
+            var contrasenaIngresada = document.getElementById("password-login").value;
+
+            // Obtener los datos guardados
+            var usuarioGuardado = localStorage.getItem("usuarioRegistrado");
+            var contrasenaGuardada = localStorage.getItem("passwordRegistrada");
+
+            // Validar credenciales registradas o el admin por defecto
+            if ((usuarioIngresado === usuarioGuardado && contrasenaIngresada === contrasenaGuardada) || 
+                (usuarioIngresado === "admin" && contrasenaIngresada === "12345")) {
+                window.location.href = "dashboard.html"; 
+            } else {
+                alert("Usuario o contraseña incorrectos. Por favor, intentá de nuevo.");
+            }
+        };
+    </script>
+</body>
+</html>

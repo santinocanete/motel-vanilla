@@ -1,0 +1,332 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-image: url(fondo.jpg);
+}
+
+.titulo {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff; /* Núcleo blanco para simular la fuente de luz */
+    font-family: 'Arial Black', sans-serif; /* Las fuentes gruesas potencian la luz */
+    text-shadow:
+        0 0 4px #ffffff,   /* Brillo interior intenso */
+        0 0 10px #ff1482,  /* Luz cercana */
+        0 0 20px #ff1482,  /* Difuminado medio */
+        0 0 40px #ff1482,  /* Resplandor amplio */
+        0 0 80px #ff1482;  /* Luz ambiental */
+}
+
+.entrar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    gap: 15px;
+}
+
+.ini_ses {
+    font-size: 20px;
+    color: #ffffff;
+    font-family: 'Arial Black', sans-serif;
+    margin-bottom: 5px;
+        text-shadow:
+        0 0 4px #ffffff,
+        0 0 10px #ff1482,
+        0 0 20px #ff1482,
+        0 0 40px #ff1482,
+        0 0 80px #ff1482;
+}
+
+.input-form {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.iniciar_sesion {
+    background-color:  #ff1482;
+    color: white;
+}
+
+.iniciar_sesion:hover {
+    background-color: #a0459a;
+}
+
+.registrar {
+    background-color:  #a0459a;
+    color: white;
+}
+
+.registrar:hover {
+    background-color: #ff1482;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo img {
+    max-width: 280px;
+    margin-bottom: 10px;
+}
+
+.informacion{
+    margin: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.quien_somo{
+    padding: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 25%;
+    background-color: #ff1482c4;
+    height: min-content;
+    transition:1s ease;
+}
+
+.quien_somo:hover{
+    transform: scale(1.50);
+}
+
+.info_quien_somo{
+    color: #ffffff;
+    font-family: 'Arial Black', sans-serif;
+    margin-bottom: 5px;
+        text-shadow:
+        0 0 4px #ffffff,
+        0 0 10px #ff1482,
+        0 0 20px #ff1482,
+        0 0 40px #ff1482,
+        0 0 80px #ff1482;
+}
+
+.precios{
+    padding: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 25%;
+    background-color: #ff1482c4;
+    height: min-content;  
+    transition:1s ease;
+}
+
+.precios:hover{
+    transform: scale(1.50);
+}
+
+.text_precios{
+    color: #ffffff;
+    font-family: 'Arial Black', sans-serif;
+    margin-bottom: 5px;
+        text-shadow:
+        0 0 4px #ffffff,
+        0 0 10px #ff1482,
+        0 0 20px #ff1482,
+        0 0 40px #ff1482,
+        0 0 80px #ff1482;
+}
+
+.servi{
+    padding: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 25%;
+    background-color: #ff1482c4;
+    transition:1s ease;
+}
+
+.servi:hover{
+    transform: scale(1.50);
+}
+
+.text_servi{
+    color: #ffffff;
+    font-family: 'Arial Black', sans-serif;
+    margin-bottom: 5px;
+        text-shadow:
+        0 0 4px #ffffff,
+        0 0 10px #ff1482,
+        0 0 20px #ff1482,
+        0 0 40px #ff1482,
+        0 0 80px #ff1482;
+}
+
+.img_noob{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.img_hab_1 {
+    flex: 1;
+    min-width:0;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 1s ease;
+}
+
+.img_hab_1:hover{
+    transform: scale(1.50);
+}
+
+.registro{
+    height: 100vh;
+}
+
+.info{
+    height: 100vh;
+}
+
+.imagenes{
+    height: 100vh;
+}
+
+.titulo_hab_noob{
+    text-align: center;
+    font-size: 60px;
+    text-decoration: underline;
+    color: #ffffff;
+    font-family: 'Arial Black', sans-serif;
+    margin-bottom: 5px;
+        text-shadow:
+        0 0 4px #ffffff,
+        0 0 10px #ff1482,
+        0 0 20px #ff1482,
+        0 0 40px #ff1482,
+        0 0 80px #ff1482;
+}
+
+.titulo_hab_pro{
+    margin: 50px;
+    text-align: center;
+    font-size: 60px;
+    text-decoration: underline;
+    color: #ffffff;
+    font-family: 'Arial Black', sans-serif;
+    margin-bottom: 5px;
+        text-shadow:
+        0 0 4px #ffffff,
+        0 0 10px #ff1482,
+        0 0 20px #ff1482,
+        0 0 40px #ff1482,
+        0 0 80px #ff1482;
+}
+
+.img_pro{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.img_hab_2 {
+    flex: 1;
+    min-width:0;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 1s ease;
+}
+
+.img_hab_2:hover{
+    transform: scale(1.50);
+}
+
+.img_hacker{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.img_hab_3 {
+    margin-bottom: 100px;
+    flex: 1;
+    min-width:0;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 1s ease;
+}
+
+.img_hab_3:hover{
+    transform: scale(1.50);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contenido {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0px 4px 15px #ff1482;
+    position: relative;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.modal-contenido h2 {
+    color: #ffffff;
+    font-family: 'Arial Black', sans-serif;
+    text-shadow: 0 0 10px #ff1482, 0 0 20px #ff1482;
+    margin-top: 0;
+}
+
+.cerrar {
+    color: #ffffff;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cerrar:hover,
+.cerrar:focus {
+    color: #ff1482;
+    text-decoration: none;
+    cursor: pointer;
+}
